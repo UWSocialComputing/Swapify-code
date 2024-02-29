@@ -16,8 +16,7 @@ def loader_user(user_id):
     return createAccount.query.get(user_id)
 
 class createAccount(UserMixin, db.Model):
-    # id = db.Column(db.Integer, primary_key=True)
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(200), nullable=False)
     lastName = db.Column(db.String(200), nullable=False)
     username = db.Column(db.String(200), nullable=False)
@@ -27,7 +26,7 @@ class createAccount(UserMixin, db.Model):
         return f'<createAccount {self.username}>'
 
 class SonnyItems(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(200), nullable=False)
     series = db.Column(db.String(200), nullable=False)
     category = db.Column(db.String(200), nullable=False)
