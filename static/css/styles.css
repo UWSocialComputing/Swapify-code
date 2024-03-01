@@ -6,6 +6,7 @@ body {
   width: 80%;
 }
 
+
 header {
   font-size: 40px;
   text-align: center;
@@ -207,3 +208,46 @@ select {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+/* Profile page */
+
+#profile-pic {
+  float: left;
+  margin-right: 20px;
+  /* If you want to crop the image to a certain size, use something like this */
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+
+/*#profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #dfdfdf;
+}*/
+
+#bio-section {
+  border-color: black;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 7px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#inv-section {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+}
+
