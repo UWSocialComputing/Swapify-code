@@ -209,38 +209,32 @@ select {
   transition: background-color 0.3s ease;
 }
 
-/* Profile page */
 
-#profile-pic {
-  float: left;
-  margin-right: 20px;
-  /* If you want to crop the image to a certain size, use something like this */
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-}
-
-/*#profile-img {
+#profile-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   background: #dfdfdf;
-}*/
+}
 
 #bio-section {
   border-color: black;
   border-style: solid;
   border-radius: 10px;
   border-width: 7px;
+  padding: 50px;
+  padding-bottom: 500px;
+  margin-right: 200px;
+  margin-bottom: 300px;
 }
 
 .profile-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 10px;
   margin-bottom: 10px;
+  padding: 20px;
 }
 
 #inv-section {
@@ -250,4 +244,3 @@ select {
   margin-bottom: 10px;
   justify-content: flex-end;
 }
-
