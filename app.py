@@ -80,7 +80,7 @@ def discontinued():
 def secrets():
     # query through all sonny items
     # only grab the items with common category
-    sonny_items = SonnyItems.query.filter(SonnyItems.category.ilike('Secrets')).all()
+    sonny_items = SonnyItems.query.filter(SonnyItems.category.ilike('Secret')).all()
     return render_template('secrets.html', items=sonny_items)
 
 
