@@ -49,6 +49,10 @@ def profile():
     sonny_items = SonnyItems.query.all()
     return render_template('profile.html', items=sonny_items)
 
+@app.route('/form')
+def form():
+    return render_template('form.html',)
+
 @app.route('/common')
 def common():
     # query through all sonny items

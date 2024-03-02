@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <header>SonnySwap</header>
 </head>
+
 <body>
     <nav class="navbar">
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('profile') }}">Profile</a>
         <a id="logout" href="{{ url_for('logout') }}">Logout</a>
         <a href="{{ url_for('favorites') }}">Favorites</a>
+        <a href="{{ url_for('form') }}">+</a>
     </nav>
 
     <div class = "profile-container">
@@ -26,8 +29,8 @@
                 {% else %}
                     <h2> Name not found</h2>
                 {%endfor %}
-    </h2>
         </section>
+
         <section class="inv-section">
             <h1> Inventory </h1>
             <div class="inventory-items">
@@ -41,27 +44,18 @@
                 {% endfor %}
             </div>
 
-            <h2> Create new listing </h2>
+            <!-- <h2> Create new listing </h2>
             <div class="create-form">
-                <form action="/add_inventory" method="post">
-                <input aria-label="Item name" type="text" name="name" placeholder="Name" required>
-                <input aria-label="Series name" type="text" name="series" placeholder="Series">
-                <select aria-label="Category name" name="category">
-                    <option value="" disabled selected>Category</option>
-                    <option value="Common">Common</option>
-                    <option value="Limited">Limited</option>
-                    <option value="Discontinued">Discontinued</option>
-                    <option value="Secrets">Secrets</option>
-                    <option value="Robbie">Robby</option>
-                </select>
-                <input aria-label="market value" type="number" step="0.01" name="mrk_value" placeholder="Market Value">
-                <input aria-label="image url" type="text" name="images" placeholder="Image URL">
-                <input aria-label="checkbox" type="checkbox" name="favorite" value="true"> Favorite<br>
-                <button id="submit" type="submit">Add Inventory</button>
-                </form>
-            </div>
-
+                <button id="loadFormButton" onclick="loadForm()">Load Form</button>
+            </div> -->
         </section>
     </div>
+
+    <script>
+        function loadForm() {
+            // Redirect to the form page
+            window.location.href = "/form";
+        }
+    </script>
 </body>
 </html>

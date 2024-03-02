@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Common</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
-<body>
-<nav class="navbar">
-    <a href="{{ url_for('index') }}">Home</a>
-    <a href="{{ url_for('profile') }}">Profile</a>
-</nav>
 
-<h1>Common Sonny Items</h1>
-<ul>
-    {% if items %}
-        {% for item in items %}
-            <h3>{{ item.name }}</h3>
-            <img src="{{ item.images }}" alt="{{ item.name }}">
-            <p>Series: {{ item.series }}</p>
-            <p>Category: {{ item.category }}</p>
-            <p>Market Value: {{ item.mrk_value }}</p>
-            <!-- add more details later -->
-        {% endfor %}
-    {% else %}
-        <p>No Common Sonny items found.</p>
-    {% endif %}
-</ul>
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
+    </nav>
+
+    <h1>Common Sonny Items</h1>
+    <ul>
+        {% if items %}
+            {% for item in items %}
+                <h3>{{ item.name }}</h3>
+                <img src="{{ item.images }}" alt="{{ item.name }}">
+                <p>Series: {{ item.series }}</p>
+                <p>Category: {{ item.category }}</p>
+                <p>Market Value: {{ item.mrk_value }}</p>
+                <!-- add more details later -->
+            {% endfor %}
+        {% else %}
+            <p>No Common Sonny items found.</p>
+        {% endif %}
+    </ul>
 </body>
 </html>

@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="styles.css">
      <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
+
 <body>
-{% block content %}
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for msg in messages %}
-            <h4>{{msg}}</h4>
-    {% endfor %}
-{% endif %}
-{% endwith %}
-<nav class="navbar">
-    <a href="{{ url_for('index') }}">Home</a>
-    <a href="{{ url_for('profile') }}">Profile</a>
-</nav>
+  {% block content %}
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for msg in messages %}
+              <h4>{{msg}}</h4>
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <nav class="navbar">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('profile') }}">Profile</a>
+      <a href="{{ url_for('form') }}">+</a>
+  </nav>
+  {% endblock %}
 
-{% endblock %}
-
-<div class="grid-container">
-  <div class="grid-item">
-    <a href="{{ url_for('common') }}">Common</a>
+  <div class="grid-container">
+      <div class="grid-item">
+          <a href="{{ url_for('common') }}">Common</a>
+      </div>
+      <div class="grid-item">
+          <a href="{{ url_for('limited') }}">Limited</a>
+      </div>
+      <div class="grid-item">
+          <a href="{{ url_for('discontinued') }}">Discontinued</a>
+      </div>
+      <div class="grid-item">
+          <a href="{{ url_for('secrets') }}">Secrets</a>
+      </div>
+      <div class="grid-item">
+          <a href="{{ url_for('robbie') }}">Robby</a>
+      </div>
   </div>
-  <div class="grid-item">
-    <a href="{{ url_for('limited') }}">Limited</a>
-  </div>
-  <div class="grid-item">
-    <a href="{{ url_for('discontinued') }}">Discontinued</a>
-  </div>
-    <div class="grid-item">
-        <a href="{{ url_for('secrets') }}">Secrets</a>
-    </div>
-    <div class="grid-item">
-        <a href="{{ url_for('robbie') }}">Robby</a>
-    </div>
-</div>
 </body>
 </html>

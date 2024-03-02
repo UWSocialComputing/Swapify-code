@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Limited</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
+
 <body>
-<nav class="navbar">
-    <a href="{{ url_for('index') }}">Home</a>
-    <a href="{{ url_for('profile') }}">Profile</a>
-</nav>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
+    </nav>
 
-
-<h1>Limited Sonny Items</h1>
-<ul>
-    {% if items %}
-        {% for item in items %}
-        <li>
-            <h2>{{ item.name }}</h2>
-            <img src="{{ item.images }}" alt="{{ item.name }}">
-            <p>Series: {{ item.series }}</p>
-            <p>Category: {{ item.category }}</p>
-            <p>Market Value: {{ item.mrk_value }}</p>
-            <!-- add more details later -->
-        </li>
-        {% endfor %}
-    {% else %}
-        <p>No Limited Sonny items found.</p>
-    {% endif %}
-</ul>
-
+    <h1>Limited Sonny Items</h1>
+    <ul>
+        {% if items %}
+            {% for item in items %}
+            <li>
+                <h2>{{ item.name }}</h2>
+                <img src="{{ item.images }}" alt="{{ item.name }}">
+                <p>Series: {{ item.series }}</p>
+                <p>Category: {{ item.category }}</p>
+                <p>Market Value: {{ item.mrk_value }}</p>
+                <!-- add more details later -->
+            </li>
+            {% endfor %}
+        {% else %}
+            <p>No Limited Sonny items found.</p>
+        {% endif %}
+    </ul>
 </body>
 </html>
