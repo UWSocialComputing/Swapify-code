@@ -49,6 +49,10 @@ def profile():
     sonny_items = SonnyItems.query.all()
     return render_template('profile.html', items=sonny_items)
 
+@app.route('/form')
+def form():
+    return render_template('form.html',)
+
 @app.route('/common')
 def common():
     # query through all sonny items
@@ -84,7 +88,7 @@ def secrets():
 def robbie():
     # query through all sonny items
     # only grab the items with common category
-    sonny_items = SonnyItems.query.filter(SonnyItems.category.ilike('Robbie')).all()
+    sonny_items = SonnyItems.query.filter(SonnyItems.category.ilike('Robby')).all()
     return render_template('robbie.html', items=sonny_items)
 
 @app.route('/favorites')

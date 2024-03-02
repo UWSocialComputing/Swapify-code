@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Limited</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
+    </nav>
+
+    <form action="/add_inventory" method="post">
+        <input aria-label="Item name" type="text" name="name" placeholder="Name" required>
+        <input aria-label="Series name" type="text" name="series" placeholder="Series">
+        <select aria-label="Category name" name="category">
+            <option value="" disabled selected>Category</option>
+            <option value="Common">Common</option>
+            <option value="Limited">Limited</option>
+            <option value="Discontinued">Discontinued</option>
+            <option value="Secrets">Secret</option>
+            <option value="Robbie">Robby</option>
+        </select>
+        <input aria-label="market value" type="number" step="0.01" name="mrk_value" placeholder="Market Value">
+        <input aria-label="image url" type="text" name="images" placeholder="Image URL">
+        <input aria-label="checkbox" type="checkbox" name="favorite" value="true"> Favorite<br>
+        <button id = "back" onclick="goBack()">Back</button>
+        <button id="submit" type="submit">Add Inventory</button>
+    </form>
+
+    <script>
+        function goBack() {
+            // Navigate back to the previous page
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Common</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
-<body>
-<nav class="navbar">
-    <a href="{{ url_for('index') }}">Home</a>
-    <a href="{{ url_for('profile') }}">Profile</a>
-</nav>
 
-<h1>Common Sonny Items</h1>
-<ul class="item-list">
-    {% if items %}
-        {% for item in items %}
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
+    </nav>
+
+    <h1>Common Sonny Items</h1>
+    <ul class="item-list">
+        {% if items %}
+            {% for item in items %}
             <li>
                 <h3>{{ item.name }}</h3>
                 <div class="grid-container">
                     <div class="image-container">
-                        <img src="{{ item.images }}" alt="{{ item.name }}">
+                            <img src="{{ item.images }}" alt="{{ item.name }}">
                     </div>
                 </div>
                 <p>Series: {{ item.series }}</p>
@@ -27,10 +30,10 @@
                 <p>Market Value: {{ item.mrk_value }}</p>
                 <!-- add more details later -->
             </li>
-        {% endfor %}
-    {% else %}
-        <p>No Limited Sonny items found.</p>
-    {% endif %}
-</ul>
+            {% endfor %}
+        {% else %}
+            <p>No Common Sonny items found.</p>
+        {% endif %}
+    </ul>
 </body>
 </html>
