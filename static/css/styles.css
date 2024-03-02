@@ -18,13 +18,6 @@ img {
   object-fit: cover;
 }
 
-form {
-  width: 80%;
-  box-sizing: border-box;
-  border: gray;
-  border-radius: 4px;
-}
-
 #login{
   text-align: center;
 }
@@ -198,7 +191,8 @@ select {
   background: linear-gradient(123.5deg, rgba(244, 219, 251, .5) 29.3%, rgba(255, 214, 214, 0.5) 67.1%);
 }
 
-#submit{
+#submit,
+#back {
   background: linear-gradient(123.5deg, rgba(244, 219, 251, .5) 29.3%, rgba(255, 214, 214, 0.5) 67.1%);
   color: #000000;
   border: none;
@@ -243,4 +237,12 @@ select {
   padding: 10px;
   margin-bottom: 10px;
   justify-content: flex-end;
+}
+
+form {
+  width: 80%;
+  box-sizing: border-box;
+  border: gray;
+  border-radius: 4px;
+  margin-top: 40px;
 }
