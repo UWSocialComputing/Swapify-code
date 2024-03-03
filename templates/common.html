@@ -19,12 +19,12 @@
         {% if items %}
             {% for item in items %}
             <li>
-                <h3>{{ item.name }}</h3>
                 <div class="grid-container">
+                    <h3>{{ item.name }}</h3>
                     <div class="image-container">
                             <img src="{{ item.images }}" alt="{{ item.name }}">
                     </div>
-                </div>
+                <div class="item-details">
                 <p>Series: {{ item.series }}</p>
                 <p>Category: {{ item.category }}</p>
                 <p>Market Value: {{ item.mrk_value }}</p>
