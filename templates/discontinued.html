@@ -14,22 +14,41 @@
         <a href="{{ url_for('form') }}">+</a>
     </nav>
 
+
     <h1>Discontinued Sonny Items</h1>
-    <ul>
+    <ul class="item-list">
         {% if items %}
             {% for item in items %}
-            <li>
-                <h2>{{ item.name }}</h2>
-                <img src="{{ item.images }}" alt="{{ item.name }}">
-                <p>Series: {{ item.series }}</p>
-                <p>Category: {{ item.category }}</p>
-                <p>Market Value: {{ item.mrk_value }}</p>
-                <!-- add more details later -->
-            </li>
+                <li>
+                    <h3>{{ item.name }}</h3>
+                    <div class="grid-container">
+                        <div class="image-container">
+                                <img src="{{ item.images }}" alt="{{ item.name }}">
+                        </div>
+                    </div>
+                    <p>Series: {{ item.series }}</p>
+                    <p>Category: {{ item.category }}</p>
+                    <p>Market Value: {{ item.mrk_value }}</p>
+                    <!-- add more details later -->
+                </li>
             {% endfor %}
         {% else %}
             <p>No Discontinued Sonny items found.</p>
         {% endif %}
     </ul>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Title Goes Here</h2>
+            <div id="modal-details">
+                <!-- Details will be filled in by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/script/script.js"></script>
 </body>
 </html>
