@@ -1,16 +1,12 @@
-from flask import Flask, session, render_template, request, flash, redirect, url_for
+from flask import Flask, session, render_template, request, flash, redirect, url_for, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, logout_user
-import sys
+import uuid
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test_nancy.db'
 app.config["SECRET_KEY"] = "abc"
-
-@app.route('/')
-def index():
-     return render_template('index.html')
 
 db = SQLAlchemy(app)
 
@@ -28,6 +24,7 @@ class createAccount(UserMixin, db.Model):
     username = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    auth_token = db.Column(db.String(200))
     def __repr__(self):
         return f'<createAccount {self.firstName}>'
 
@@ -48,14 +45,22 @@ class Socials(UserMixin, db.Model):
     social_link = db.Column(db.String(200), nullable=False)
     social_username = db.Column(db.String(200), nullable=False)
     def __repr__(self):
-        return f'<createAccount {self.username}>'
+        return f'<createAccount {self.social_media}>'
+
+
+@app.route('/')
+def index():
+     return render_template('index.html')
 
 @app.route('/profile')
 def profile():
     sonny_items = SonnyItems.query.all()
     socials = Socials.query.all()
-    user = createAccount.query.order_by(createAccount.id.desc()).first()
-    return render_template('profile.html', items=sonny_items, user=user, media = socials)
+    auth_token = request.cookies.get('auth_token')
+    if auth_token:
+        user = createAccount.query.filter_by(auth_token=auth_token).first()
+        if user:
+            return render_template('profile.html', items=sonny_items, media=socials, user=user)
 
 @app.route('/form')
 def form():
@@ -143,7 +148,6 @@ def socials_link():
             flash('There was an issue adding one of your inputs.', 'error')
             return redirect(url_for('profile'))
 
-
 @app.route('/create', methods=['POST', 'GET'])
 def create():
     if request.method == 'POST':
@@ -153,8 +157,8 @@ def create():
         em = request.form['email-text']
         passw = request.form['pass-text']
 
-        userExists = db.session.query(createAccount.id).filter_by(username=user).first() is not None
-        emailExists = db.session.query(createAccount.id).filter_by(email=em).first() is not None
+        userExists = createAccount.query.filter_by(username=user).first() is not None
+        emailExists = createAccount.query.filter_by(email=em).first() is not None
         if userExists:
             flash("Username already exists.", 'error')
             return redirect(url_for('create'))
@@ -163,17 +167,19 @@ def create():
             return redirect(url_for('create'))
         else:
             try:
-                db.session.add(createAccount(firstName=first, lastName=last, username=user, email=em, password=passw))
+                auth_token = str(uuid.uuid4())
+                new_account = createAccount(firstName=first, lastName=last, username=user, email=em, password=passw, auth_token=auth_token)
+                db.session.add(new_account)
                 db.session.commit()
+                response = make_response(redirect(url_for('index')))
+                response.set_cookie('auth_token', auth_token)
                 flash('You signed up!', 'info')
-                return redirect(url_for('index'))
+                return response
             except:
-                flash('There was an issue adding one of your inputs.', 'error')
+                flash('There was an issue adding your account.', 'error')
                 return redirect(url_for('create'))
-
     else:
         return render_template('create-account.html')
-
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -181,12 +187,16 @@ def login():
         try:
             logemail = request.form['email-text']
             logpassw = request.form['pass-text']
-
-            combo = db.session.query(createAccount).filter_by(email=logemail, password=logpassw).first()
+            combo = createAccount.query.filter_by(email=logemail, password=logpassw).first()
 
             if combo:
+                auth_token = str(uuid.uuid4())
+                combo.auth_token = auth_token
+                db.session.commit()
+                response = make_response(redirect(url_for('index')))
+                response.set_cookie('auth_token', auth_token)
                 flash('You are logged in!', 'info')
-                return redirect(url_for('index'))
+                return response
             else:
                 flash('Wrong username and password combination. Please try again', 'error')
                 return redirect(url_for('login'))
@@ -196,13 +206,13 @@ def login():
     else:
         return render_template('login.html')
 
+
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     logout_user()
     flash('You have successfully logged yourself out.')
     return render_template('login.html')
-
 
 if __name__ == "__main__":
     with app.app_context():
