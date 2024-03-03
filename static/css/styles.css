@@ -278,7 +278,7 @@ select {
 
 .image-container img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 form {
