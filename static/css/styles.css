@@ -223,6 +223,10 @@ select {
   margin-bottom: 300px;
 }
 
+#name {
+  padding-left: 10px;
+}
+
 .profile-container {
   display: flex;
   flex-direction: row;
@@ -245,4 +249,23 @@ form {
   border: gray;
   border-radius: 4px;
   margin-top: 40px;
+}
+#social-add {
+  padding-left: 10px;
+}
+#social-items {
+  padding-top: 100px;
+  border: gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin:auto;
+}
+
+#social-item {
+  padding-top: 50px;
+  border: gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin:auto;
+
 }

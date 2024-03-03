@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Limited</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
+    </nav>
+
+    <form action="/socials_link" method="post">
+        <h4> Platform: <input aria-label="Platform" type="text" name="platform" required> </h4>
+        <h4> Link or Phone: <input aria-label="Link" type="text" name="link"></h4>
+        <h4> Username: <input aria-label ="username" type="text" name="username"> </h4>
+        <button id = "back" onclick="goBack()">Back</button>
+        <button id="submit" type="submit">Add Social Media</button>
+    </form>
+
+    <script>
+        function goBack() {
+            // Navigate back to the previous page
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
