@@ -42,12 +42,20 @@ class SonnyItems(UserMixin, db.Model):
     def __repr__(self):
         return f'<SonnyItems {self.name}>'
 
-
+class Socials(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    social_media = db.Column(db.String(200), nullable=False)
+    social_link = db.Column(db.String(200), nullable=False)
+    social_username = db.Column(db.String(200), nullable=False)
+    def __repr__(self):
+        return f'<createAccount {self.username}>'
 
 @app.route('/profile')
 def profile():
     sonny_items = SonnyItems.query.all()
-    return render_template('profile.html', items=sonny_items)
+    socials = Socials.query.all()
+    user = createAccount.query.order_by(createAccount.id.desc()).first()
+    return render_template('profile.html', items=sonny_items, user=user, media = socials)
 
 @app.route('/form')
 def form():
@@ -95,21 +103,6 @@ def robbie():
 def favorites():
     return render_template('favorites.html')
 
-@app.route('/profile_name')
-def profile_name():
-    users = db.session.query(createAccount).order_by(createAccount.id.desc()).first()
-    return render_template('profile.html', users=users)
-
-@app.route('/firstname')
-def firstename():
-    first = createAccount.query.filter(createAccount.firstName).order_by(createAccount.id.desc()).all()
-    return render_template('profile.html', user=first)
-
-@app.route('/lastname')
-def lastname():
-    last = createAccount.query.filter(createAccount.lastName).all()
-    return render_template('profile.html', user=last)
-
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
     if request.method == 'POST':
@@ -127,6 +120,26 @@ def add_inventory():
             return redirect(url_for('profile'))
         except Exception as e:
             print("Exception:", e) # for debugging
+            flash('There was an issue adding one of your inputs.', 'error')
+            return redirect(url_for('profile'))
+
+@app.route('/socials')
+def socials():
+    return render_template('socials.html')
+
+@app.route('/socials_link', methods=['POST', 'GET'])
+def socials_link():
+    if request.method == 'POST':
+        platform = request.form['platform']
+        link = request.form['link']
+        username = request.form['username']
+
+        try:
+            db.session.add(Socials(social_media=platform, social_link=link, social_username=username))
+            db.session.commit()
+            flash('Social media added successfully!', 'success')
+            return redirect(url_for('profile'))
+        except:
             flash('There was an issue adding one of your inputs.', 'error')
             return redirect(url_for('profile'))
 
