@@ -191,8 +191,6 @@ def login():
 
             if combo:
                 auth_token = combo.auth_token
-                #combo.auth_token = auth_token #gets  cookie from given information
-                #db.session.commit()
                 response = make_response(redirect(url_for('index')))
                 response.set_cookie('auth_token', auth_token)
                 flash('You are logged in!', 'info')
