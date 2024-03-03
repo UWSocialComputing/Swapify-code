@@ -190,9 +190,9 @@ def login():
             combo = createAccount.query.filter_by(email=logemail, password=logpassw).first()
 
             if combo:
-                auth_token = str(uuid.uuid4())
-                combo.auth_token = auth_token
-                db.session.commit()
+                auth_token = combo.auth_token
+                #combo.auth_token = auth_token #gets  cookie from given information
+                #db.session.commit()
                 response = make_response(redirect(url_for('index')))
                 response.set_cookie('auth_token', auth_token)
                 flash('You are logged in!', 'info')
