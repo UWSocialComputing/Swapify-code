@@ -14,6 +14,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 class SonnyItems(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user = db.Column(db.String(200), nullable=False)
@@ -152,12 +153,13 @@ def profile():
 
 
 @app.route('/user/<username>')
-@login_required
 def user_profile(username):
-    user = createAccount.query.filter_by(username=username).first()
-    if user is None:
-        render_template('index.html')  # Not found
-    return render_template('user_profile.html', user=user)
+    user_ = createAccount.query.filter_by(username=username).first()
+    socials_ = Socials.query.filter_by(user=username).all()
+    users_sonny = SonnyItems.query.filter_by(user=username).all()
+    if user_ is None:
+        return render_template('index.html')
+    return render_template('user_profile.html', items=users_sonny, username=user_.username, first=user_.firstName, last=user_.lastName, socials=socials_)
 
 
 @app.route('/form')
