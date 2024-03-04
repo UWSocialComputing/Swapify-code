@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 
 <body>
@@ -35,11 +34,32 @@
           <a href="{{ url_for('discontinued') }}">Discontinued</a>
       </div>
       <div class="grid-item">
-          <a href="{{ url_for('secrets') }}">Secret</a>
+          <a href="{{ url_for('secrets') }}">Secrets</a>
       </div>
       <div class="grid-item">
           <a href="{{ url_for('robbie') }}">Robby</a>
       </div>
   </div>
+
+<ul class="item-list">
+        {% if items %}
+            {% for item in items %}
+                <li>
+                    <h3>{{ item.name }}</h3>
+                    <div class="grid-container">
+                        <div class="image-container">
+                            <img src="{{ item.images }}" alt="{{ item.name }}">
+                        </div>
+                    </div>
+                    <p>User: {{ item.user }} </p>
+                    <p>Series: {{ item.series }}</p>
+                    <p>Category: {{ item.category }}</p>
+                    <p>Market Value: ${{ item.mrk_value }}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>No Sonny items found.</p>
+        {% endif %}
+    </ul>
 </body>
 </html>

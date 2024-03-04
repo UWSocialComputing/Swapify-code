@@ -25,9 +25,10 @@
                             <img src="{{ item.images }}" alt="{{ item.name }}">
                     </div>
                 </div>
+                <p> User: {{ item.user }} </p>
                 <p>Series: {{ item.series }}</p>
                 <p>Category: {{ item.category }}</p>
-                <p>Market Value: {{ item.mrk_value }}</p>
+                <p>Market Value: ${{ item.mrk_value }}</p>
                 <!-- add more details later -->
             </li>
             {% endfor %}
