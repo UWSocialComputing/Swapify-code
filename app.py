@@ -1,7 +1,9 @@
-from flask import Flask, session, render_template, request, flash, redirect, url_for
+from flask import Flask, session, render_template, request, flash, redirect, url_for, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, logout_user, current_user, login_user, login_required
 import sys
+import uuid
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///swapify.db'
@@ -11,7 +13,6 @@ db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
 
 class SonnyItems(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -35,7 +36,12 @@ class Socials(UserMixin, db.Model):
     user = db.Column(db.String(200), nullable=False)
 
     def __repr__(self):
-        return f'<createAccount {self.username}>'
+        return f'<createAccount {self.social_media}>'
+
+
+@app.route('/')
+def index():
+     return render_template('index.html')
 
 
 @app.route('/')
@@ -280,7 +286,7 @@ def socials_link():
         except:
             flash('There was an issue adding one of your inputs.', 'error')
             return redirect(url_for('profile'))
-
+          
 
 if __name__ == "__main__":
     with app.app_context():
