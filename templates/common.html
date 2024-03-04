@@ -28,7 +28,7 @@
                         {% endfor %}
                     </div>
                 </div>
-                <p> User: {{ item.user }} </p>
+                <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
 
                 <div class="item-details">
                 <p>Series: {{ item.series }}</p>
