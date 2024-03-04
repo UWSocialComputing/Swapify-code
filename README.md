@@ -11,4 +11,5 @@ To ensure that the project runs smoothly locally, here are the instructions:
     - source env/bin/activate
     - pip3 install flask flask-sqlalchemy
     - python3 app.py
-4. If the steps are done correctly, you should see this pop up: ![Alt Text](Screenshot 2024-03-03 at 4.02.48 PM.png)
+4. If the steps are done correctly, you should see this pop up:
+![alt text](showterminal.png)
