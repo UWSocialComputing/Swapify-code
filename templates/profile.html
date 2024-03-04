@@ -65,7 +65,11 @@
                 {% for item in items %}
                     <div class="sonny-item">
                         <h4>{{ item.name }}</h4>
-                        <img src="{{ item.images }}" alt="{{ item.name }}">
+                        <div class="images">
+                            {% for image in item.images %}
+                                <img src="{{ image.url }}" alt="{{ item.name }} Image">
+                            {% endfor %}
+                        </div>
                     </div>
                     <form id="editForm" action="/edit_inventory/{{ item.id }}" method="post" style="display:none;">
                         <input aria-label="Item name" type="text" name="name" value="{{ item.name }}" placeholder="Name" required>

@@ -1,8 +1,7 @@
 from flask import Flask, session, render_template, request, flash, redirect, url_for, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, logout_user, current_user, login_user, login_required
-import sys
-import uuid
+from sqlalchemy.orm import relationship
 
 
 app = Flask(__name__)
@@ -21,12 +20,21 @@ class SonnyItems(UserMixin, db.Model):
     series = db.Column(db.String(200), nullable=False)
     category = db.Column(db.String(200), nullable=False)
     mrk_value = db.Column(db.Float, nullable=False)
-    images = db.Column(db.String(200), nullable=False)
+    images = relationship("ItemImage", back_populates="item")
     favorite = db.Column(db.Boolean, default=0)
 
     def __repr__(self):
         return f'<SonnyItems {self.name}>'
 
+
+class ItemImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    item_id = db.Column(db.Integer, db.ForeignKey('sonny_items.id'))
+    url = db.Column(db.String(200), nullable=False)
+    item = relationship("SonnyItems", back_populates="images")
+
+    def __repr__(self):
+        return f'<ItemImage {self.id}>'
 
 class Socials(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -216,25 +224,29 @@ def favorites():
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
     if request.method == 'POST':
-        name = request.form['name']
-        series = request.form['series']
-        category = request.form['category']
-        mrk_value = request.form['mrk_value']
-        images = request.form['images']
-        favorite = True if request.form.get('favorite') == 'true' else False
-        print(f"{current_user.username}")
         try:
-            print(f"{current_user}")
-            db.session.add(SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value, images=images, favorite=favorite))
+            name = request.form['name']
+            series = request.form['series']
+            category = request.form['category']
+            mrk_value = request.form['mrk_value']
+            images = request.form.getlist('images')  # Get list of all image URLs
+            favorite = True if request.form.get('favorite') == 'on' else False
+
+            # Save inventory item with multiple images
+            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value, favorite=favorite)
+            db.session.add(inventory_item)
+
+            # Add multiple images
+            for img_url in images:
+                image = ItemImage(url=img_url, item=inventory_item)
+                db.session.add(image)
+
             db.session.commit()
             flash('Inventory item added successfully!', 'success')
             return redirect(url_for('profile'))
-        except KeyError:
-            flash('You must input all fields: name, series, category, mrk_value, images')
-            return redirect(url_for('profile'))
         except Exception as e:
-            print("Exception:", e)  # for debugging
-            flash('There was an issue adding one of your inputs.', 'error')
+            print("Exception:", e)
+            flash('Error: Failed to add inventory item. Please try again.', 'error')
             return redirect(url_for('profile'))
 
 
@@ -281,7 +293,7 @@ def socials_link():
         except:
             flash('There was an issue adding one of your inputs.', 'error')
             return redirect(url_for('profile'))
-          
+
 
 if __name__ == "__main__":
     with app.app_context():
