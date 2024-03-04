@@ -1,4 +1,4 @@
-CREATE TABLE create_account (
+CREATE TABLE createAccounts (
     id INTEGER PRIMARY KEY,
     -- owner_id INTEGER NOT NULL,
     firstName VARCHAR(200) NOT NULL,
@@ -21,5 +21,15 @@ CREATE TABLE sonny_items (
     mrk_value FLOAT NOT NULL,
     images VARCHAR(200) NOT NULL,
     favorite BOOLEAN DEFAULT 0 NOT NULL,
-    -- FOREIGN KEY (owner_id) REFERENCES createAccount(id)
+    -- FOREIGN KEY (owner_id) REFERENCES accounts(id)
 );
+
+CREATE TABLE socials (
+    id INTEGER PRIMARY KEY,
+    social_media VARCHAR(200) NOT NULL,
+    social_link VARCHAR(200) NOT NULL,
+    social_username VARCHAR(200) NOT NULL,
+    -- user VARCHAR(200) NOT NULL,
+    REFERENCES accounts(username)
+);
+

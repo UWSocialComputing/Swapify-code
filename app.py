@@ -40,11 +40,6 @@ class Socials(UserMixin, db.Model):
 
 
 @app.route('/')
-def index():
-     return render_template('index.html')
-
-
-@app.route('/')
 def start():
     sonny_items = SonnyItems.query.order_by(SonnyItems.id).all()
     return render_template('index.html', items=sonny_items)
