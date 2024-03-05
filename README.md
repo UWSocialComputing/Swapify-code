@@ -20,5 +20,5 @@ To ensure that the project runs smoothly locally, here are the instructions:
 6. Lastly, type in `localhost:5000` in your browser to run the frontend webpages. So, if you were to visit the profile page,
 you would type in localhost:5000/profile.
 ## Authors
-This project was created in CSE 481 Social Computing Capstone at the University of Washington. Our team name is Swapify, and
-our member consists of Andy Thai, Nancy Jimenez-Garcia, Nora Medina and Gai Wai Wong.
+This project was created in CSE 481, a Social Computing Capstone at the University of Washington. Our team name is Swapify, and
+our members consists of Andy Thai, Nancy Jimenez-Garcia, Nora Medina and Gai Wai Wong.
