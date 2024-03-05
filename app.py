@@ -256,22 +256,16 @@ def add_inventory():
 def edit_inventory(item_id):
     if request.method == 'POST':
         item = SonnyItems.query.get_or_404(item_id)
-
+        images = ItemImage.query.filter_by(item_id=item_id).all()
         item.name = request.form['name']
         item.series = request.form['series']
         item.category = request.form['category']
         item.mrk_value = request.form['mrk_value']
-        item.images = request.form.getlist('images')  # Get list of all image URLs
-
         item.favorite = True if request.form.get('favorite') == 'true' else False
 
-        # saving information with information.
-        inventory_item = SonnyItems(user=current_user.username, name=item.name, series=item.series, category=item.category, mrk_value=item.mrk_value, favorite=item.favorite)
-
-        # upadting multiple images
-        for img_url in item.images:
-                image = ItemImage(url=img_url, item=inventory_item)
-                db.session.add(image)
+        for image in images:
+            new_url = request.form['images']
+            image.url = new_url
 
         try:
             db.session.commit()
