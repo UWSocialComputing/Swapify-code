@@ -16,6 +16,8 @@
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('profile') }}">Profile</a>
         <a href="{{ url_for('form') }}">+</a>
+        <a id="logout" href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('favorites') }}">Favorites</a>
     </nav>
 
     <form action="/add_inventory" method="post">
