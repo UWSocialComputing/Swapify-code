@@ -139,7 +139,7 @@ a {
     display: block;
     color: #000000;
     text-align: center;
-    padding: 14px 20px;
+    padding: 15px 18px;
     text-decoration: none;
 }
 
@@ -177,6 +177,17 @@ a {
   margin-bottom: 5px;
 }
 
+.grid-item a{
+  color:#9d84bd;
+  letter-spacing: 10px;
+}
+
+.grid-item a:hover{
+  transition: color 0.5s ease;
+  color: #cf1f51;
+}
+
+
 input[type="text"],
 input[type="number"],
 textarea,
@@ -208,7 +219,7 @@ select {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
   background: #dfdfdf;
 }
 
@@ -274,12 +285,19 @@ select {
   border: 1px solid black;
   overflow: hidden;
   box-sizing: border-box;
+  margin: 1px;
 }
 
 .image-container img {
   width: 100%;
   object-fit: contain;
+  transition: filter 0.5s ease;
 }
+
+.image-container img:hover {
+  filter: opacity(0.6);
+}
+
 
 form {
   width: 80%;
@@ -345,3 +363,31 @@ form {
   text-decoration: none;
   cursor: pointer;
 }
+
+.sonny-title h1 {
+  text-align: center;
+  letter-spacing: 10px;
+  background: linear-gradient(90deg, rgba(160, 155, 251, 1) 0%, rgba(224, 136, 210, 0.45) 35%, rgba(161, 223, 236, 1) 100%);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers (Chrome, Safari, etc.) */
+  color: transparent;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 15px;
+}
+.sonny-title h1 span {
+  font-weight: 300;
+  word-spacing: 3px;
+}
+
+.sonny-title h1 {
+  transition: color 0.3s ease;
+}
+.sonny-title h1:hover {
+  color: gray;
+}
+
+
+
+
+
+
