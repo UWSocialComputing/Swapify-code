@@ -184,8 +184,14 @@ a {
 
 .grid-item a:hover{
   transition: color 0.5s ease;
-  color: #cf1f51;
+  color: gray;
 }
+
+.grid-item.active a {
+  color: #FF5733; /* Change the color to indicate it's active */
+  /* Add any other styles to indicate it's active */
+}
+
 
 
 input[type="text"],
