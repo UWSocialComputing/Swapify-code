@@ -81,6 +81,10 @@
                         {% endif %}
                         <!-- add more details later -->
                     </div>
+                    <p>User: {{ item.user }} </p>
+                    <p>Series: {{ item.series }}</p>
+                    <p>Category: {{ item.category }}</p>
+                    <p>Market Value: ${{ item.mrk_value }}</p>
                 </li>
             {% endif %}
         {% endfor %}
