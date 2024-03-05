@@ -393,6 +393,7 @@ form {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .hidden {
   display: none;
 =======
@@ -400,3 +401,10 @@ form {
   filter: brightness(50%);
 >>>>>>> f44ab51 (darken image, remove info if finished trading)
 }
+=======
+
+
+
+
+
+>>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
