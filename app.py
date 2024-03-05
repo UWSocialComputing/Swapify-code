@@ -261,8 +261,17 @@ def edit_inventory(item_id):
         item.series = request.form['series']
         item.category = request.form['category']
         item.mrk_value = request.form['mrk_value']
-        item.images = request.form['images']
+        item.images = request.form.getlist('images')  # Get list of all image URLs
+
         item.favorite = True if request.form.get('favorite') == 'true' else False
+
+        # saving information with information.
+        inventory_item = SonnyItems(user=current_user.username, name=item.name, series=item.series, category=item.category, mrk_value=item.mrk_value, favorite=item.favorite)
+
+        # upadting multiple images
+        for img_url in item.images:
+                image = ItemImage(url=img_url, item=inventory_item)
+                db.session.add(image)
 
         try:
             db.session.commit()
