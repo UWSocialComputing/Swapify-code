@@ -22,7 +22,6 @@ class SonnyItems(UserMixin, db.Model):
     category = db.Column(db.String(200), nullable=False)
     mrk_value = db.Column(db.Float, nullable=False)
     images = relationship("ItemImage", back_populates="item")
-    favorite = db.Column(db.Boolean, default=0)
 
     def __repr__(self):
         return f'<SonnyItems {self.name}>'
@@ -218,11 +217,6 @@ def robbie():
     return render_template('robbie.html', items=sonny_items)
 
 
-@app.route('/favorites')
-def favorites():
-    return render_template('favorites.html')
-
-
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
     if request.method == 'POST':
@@ -232,10 +226,9 @@ def add_inventory():
             category = request.form['category']
             mrk_value = request.form['mrk_value']
             images = request.form.getlist('images')  # Get list of all image URLs
-            favorite = True if request.form.get('favorite') == 'on' else False
 
             # Save inventory item with multiple images
-            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value, favorite=favorite)
+            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value)
             db.session.add(inventory_item)
 
             # Add multiple images
@@ -261,7 +254,6 @@ def edit_inventory(item_id):
         item.series = request.form['series']
         item.category = request.form['category']
         item.mrk_value = request.form['mrk_value']
-        item.favorite = True if request.form.get('favorite') == 'true' else False
 
         for image in images:
             new_url = request.form['images']
