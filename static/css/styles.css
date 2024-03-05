@@ -269,7 +269,7 @@ select {
 
 .image-container {
   width: 200px;
-  height: 150px;
+  height: 300px;
   position: relative;
   border: 1px solid black;
   overflow: hidden;
@@ -278,7 +278,7 @@ select {
 
 .image-container img {
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 form {

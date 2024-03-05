@@ -47,9 +47,9 @@
         {% if items %}
             {% for item in items %}
                 <li>
+                    <div class="grid-container"></div>
                     <h3>{{ item.name }}</h3>
-                    <div class="grid-container">
-                        <div class="images">
+                        <div class="image-container">
                             {% for image in item.images %}
                                 <img src="{{ image.url }}" alt="{{ item.name }} Image">
                             {% endfor %}
