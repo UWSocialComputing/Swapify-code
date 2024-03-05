@@ -295,7 +295,7 @@ select {
 }
 
 .image-container img:hover {
-  filter: opacity(0.6);
+  filter: opacity(0.7);
 }
 
 

@@ -1,4 +1,4 @@
-# Swapify-code
+# Swapify
 ## Structure
 For the front end of our project, we used HTML/CSS. For the back-end, we used a framework called Flask, which uses the Python programming language.
 ## How to get the project running
@@ -17,6 +17,8 @@ To ensure that the project runs smoothly locally, here are the instructions:
 ```
 5. If the steps are done correctly, you should see this pop up:
 ![alt text](showterminal.png)
-6. Lastly, type in `localhost:5000` in your browser to run the frontend webpages.
-
-
+6. Lastly, type in `localhost:5000` in your browser to run the frontend webpages. So, if you were to visit the profile page,
+you would type in localhost:5000/profile.
+## Authors
+This project was created in CSE 481 Social Computing Capstone at the University of Washington. Our team name is Swapify, and
+our member consists of Andy Thai, Nancy Jimenez-Garcia, Nora Medina and Gai Wai Wong.
