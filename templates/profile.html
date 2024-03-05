@@ -27,9 +27,9 @@
     <nav class="navbar">
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
         <a id="logout" href="{{ url_for('logout') }}">Logout</a>
         <a href="{{ url_for('favorites') }}">Favorites</a>
-        <a href="{{ url_for('form') }}">+</a>
     </nav>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
