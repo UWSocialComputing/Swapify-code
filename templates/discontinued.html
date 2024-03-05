@@ -20,6 +20,23 @@
         <a id="logout" href="{{ url_for('logout') }}">Logout</a>
     </nav>
 
+    <div class="grid-container">
+        <div class="grid-item">
+            <a href="{{ url_for('common') }}">Common</a>
+        </div>
+        <div class="grid-item">
+            <a href="{{ url_for('limited') }}">Limited</a>
+        </div>
+        <div class="grid-item {% if current_category == 'Discontinued' %}active{% endif %}">
+            <a href="{{ url_for('discontinued') }}">Discontinued</a>
+        </div>
+        <div class="grid-item">
+            <a href="{{ url_for('secrets') }}">Secrets</a>
+        </div>
+        <div class="grid-item">
+            <a href="{{ url_for('robbie') }}">Robby</a>
+        </div>
+    </div>
 
     <h1>Discontinued Sonny Items</h1>
     <ul class="item-list">
