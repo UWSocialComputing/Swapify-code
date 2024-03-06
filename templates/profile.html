@@ -52,7 +52,7 @@
                         {% for m in media %}
                             <div id="social-item">
                                 <h4>Platform: {{ m.social_media }}</h4>
-                                <h4>Link or Phone: {{ m.social_link }}</h4>
+                                <h4>Link or Phone: <a href="{{ m.social_link }}"> {{m.social_link}} </a> </h4>
                                 <h4>Username: {{ m.social_username }}</h4>
                             </div>
                         {% else %}
