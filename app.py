@@ -295,7 +295,6 @@ def socials_link():
 @app.route('/toggle_trade/<int:item_id>', methods=['POST'])
 def toggle_trade(item_id):
     item_images = ItemImage.query.filter_by(item_id=item_id).all()
-
     for image in item_images:
         image.is_darkened = not image.is_darkened
     try:
