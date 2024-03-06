@@ -20,12 +20,8 @@
         <a id="logout" href="{{ url_for('logout') }}">Logout</a>
     </nav>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a7dd14c (changing a button depending on the current category)
     <div class="grid-container">
-        <div class="grid-item">
+        <div class="grid-item {% if current_category == 'Common' %}active{% endif %}">
             <a href="{{ url_for('common') }}">Common</a>
         </div>
         <div class="grid-item">
@@ -37,60 +33,12 @@
         <div class="grid-item">
             <a href="{{ url_for('secrets') }}">Secrets</a>
         </div>
-        <div class="grid-item {% if current_category == 'Robby' %}active{% endif %}">
+        <div class="grid-item">
             <a href="{{ url_for('robbie') }}">Robby</a>
         </div>
     </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <h1>Robby Sonny Items</h1>
-    <ul class="item-list">
-        {% if items %}
-            {% for item in items %}
-                <li>
-                    <div class="grid-container">
-                        <h3>{{ item.name }}</h3>
-                        <div class="image-container">
-                            {% for image in item.images %}
-                                <img src="{{ image.url }}" alt="{{ item.name }} Image">
-                            {% endfor %}
-                        </div>
-                        <div class="item-details hidden">
-                            <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
-                            <p>Series: {{ item.series }}</p>
-                            <p>Category: {{ item.category }}</p>
-                            <p>Market Value: {{ item.mrk_value }}</p>
-=======
-=======
->>>>>>> a7dd14c (changing a button depending on the current category)
-=======
->>>>>>> 38ff85b (changing a button depending on the current category)
-=======
->>>>>>> d9cbedd (add)
-=======
->>>>>>> a6f9b8d (changing a button depending on the current category)
-=======
->>>>>>> 8316ace (changing a button depending on the current category)
-=======
->>>>>>> a5af0dd (changing a button depending on the current category)
-=======
->>>>>>> 5f6688c (changing a button depending on the current category)
     <h1>Robbie Sonny Items</h1>
-=======
-=======
->>>>>>> b466059 (changing a button depending on the current category)
-=======
->>>>>>> b466059 (changing a button depending on the current category)
-=======
->>>>>>> b466059 (changing a button depending on the current category)
-    <h1>Robby Sonny Items</h1>
->>>>>>> b466059 (changing a button depending on the current category)
     <ul class="item-list">
         {% if items %}
             {% for item in items %}
@@ -103,15 +51,41 @@
                             {% endfor %}
                         </div>
                         <div class="item-details hidden">
+                        <div class="item-details">
+                        <div class="item-details hidden">
                             <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
                             <p>Series: {{ item.series }}</p>
                             <p>Category: {{ item.category }}</p>
                             <p>Market Value: {{ item.mrk_value }}</p>
-<<<<<<< HEAD
-                            <!-- add more details later -->
->>>>>>> f44ab51 (darken image, remove info if finished trading)
-=======
->>>>>>> 16f193f (merging and hidding details for sonnies. will only be displayed in modal)
+                {% set hide_item = false %}
+                {% for image in item.images %}
+                    {% if image.is_darkened %}
+                        {% set hide_item = true %}
+                    {% endif %}
+                {% endfor %}
+                {% if not hide_item %}
+                    <li class="item-{{ item.id }}">
+                        <div class="grid-container">
+                            {% if not item.images[0].is_darkened %}
+                                <h3>{{ item.name }}</h3>
+                                <div class="image-container">
+                                    {% for image in item.images %}
+                                        <img src="{{ image.url }}" alt="{{ item.name }} Image"
+                                        {% if image.is_darkened %}
+                                            style="display: none;"
+                                        {% endif %}>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if not item.images[0].is_darkened %}
+                            <div class="item-details">
+                                <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
+                                <p>Series: {{ item.series }}</p>
+                                <p>Category: {{ item.category }}</p>
+                                <p>Market Value: {{ item.mrk_value }}</p>
+                                <!-- add more details later -->
+                            </div>
+                            {% endif %}
                         </div>
                     </li>
                 {% endif %}

@@ -42,10 +42,6 @@
     <ul class="item-list">
         {% if items %}
             {% for item in items %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
                 <li>
                     <div class="grid-container">
                         <h3>{{ item.name }}</h3>
@@ -54,22 +50,13 @@
                                 <img src="{{ image.url }}" alt="{{ item.name }} Image">
                             {% endfor %}
                         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
                         <div class="item-details hidden">
-=======
                         <div class="item-details">
->>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
-=======
                         <div class="item-details hidden">
->>>>>>> 16f193f (merging and hidding details for sonnies. will only be displayed in modal)
                             <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
                             <p>Series: {{ item.series }}</p>
                             <p>Category: {{ item.category }}</p>
                             <p>Market Value: {{ item.mrk_value }}</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                 {% set hide_item = false %}
                 {% for image in item.images %}
                     {% if image.is_darkened %}
@@ -99,12 +86,6 @@
                                 <!-- add more details later -->
                             </div>
                             {% endif %}
-=======
->>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
-                            <!-- add more details later -->
->>>>>>> f44ab51 (darken image, remove info if finished trading)
-=======
->>>>>>> 16f193f (merging and hidding details for sonnies. will only be displayed in modal)
                         </div>
                     </li>
                 {% endif %}

@@ -48,37 +48,6 @@
   </div>
 
 <ul class="item-list">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        {% if items %}
-            {% for item in items %}
-                <li>
-                    <div class="grid-container"></div>
-                    <h3>{{ item.name }}</h3>
-                        <div class="image-container">
-                            {% for image in item.images %}
-                                <img src="{{ image.url }}" alt="{{ item.name }} Image">
-                            {% endfor %}
-                        </div>
-                    </div>
-<<<<<<< HEAD
-                    <div class="item-details hidden">
-                        <p>User: {{ item.user }} </p>
-                        <p>Series: {{ item.series }}</p>
-                        <p>Category: {{ item.category }}</p>
-                        <p>Market Value: ${{ item.mrk_value }}</p>
-                    </div>
-=======
-                    <p>User: {{ item.user }} </p>
-                    <p>Series: {{ item.series }}</p>
-                    <p>Category: {{ item.category }}</p>
-                    <p>Market Value: ${{ item.mrk_value }}</p>
-                    <i class="fa-regular fa-heart"></i>
->>>>>>> fc49f26 (display if user finishes trade or not)
-                </li>
-=======
-=======
->>>>>>> ab25706 (merging and hidding details for sonnies. will only be displayed in modal)
     {% if items %}
         {% for item in items %}
             {% set hide_item = false %}
@@ -86,30 +55,6 @@
                 {% if image.is_darkened %}
                     {% set hide_item = true %}
                 {% endif %}
-<<<<<<< HEAD
->>>>>>> f44ab51 (darken image, remove info if finished trading)
-=======
-=======
-        {% if items %}
-            {% for item in items %}
-                <li>
-                    <div class="grid-container"></div>
-                    <h3>{{ item.name }}</h3>
-                        <div class="image-container">
-                            {% for image in item.images %}
-                                <img src="{{ image.url }}" alt="{{ item.name }} Image">
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="item-details hidden">
-                        <p>User: {{ item.user }} </p>
-                        <p>Series: {{ item.series }}</p>
-                        <p>Category: {{ item.category }}</p>
-                        <p>Market Value: ${{ item.mrk_value }}</p>
-                    </div>
-                </li>
->>>>>>> 9224d9b (merging and hidding details for sonnies. will only be displayed in modal)
->>>>>>> ab25706 (merging and hidding details for sonnies. will only be displayed in modal)
             {% endfor %}
             {% if not hide_item %}
                 <li class="item-{{ item.id }}">

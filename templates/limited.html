@@ -16,38 +16,15 @@
     <nav class="navbar">
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('form') }}">+</a>
         <a id="logout" href="{{ url_for('logout') }}">Logout</a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <a href="{{ url_for('form') }}">+</a>
-=======
-        <a href="{{ url_for('favorites') }}">Favorites</a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 51dd808 (fixing css and html)
     </nav>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a7dd14c (changing a button depending on the current category)
-=======
->>>>>>> 2f44db2 (css/html)
-=======
-=======
->>>>>>> b466059 (changing a button depending on the current category)
->>>>>>> 38ff85b (changing a button depending on the current category)
 
     <div class="grid-container">
-        <div class="grid-item">
+        <div class="grid-item {% if current_category == 'Common' %}active{% endif %}">
             <a href="{{ url_for('common') }}">Common</a>
         </div>
-        <div class="grid-item {% if current_category == 'Limited' %}active{% endif %}">
+        <div class="grid-item">
             <a href="{{ url_for('limited') }}">Limited</a>
         </div>
         <div class="grid-item">
@@ -61,165 +38,10 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 89cf88d (css/html)
-=======
->>>>>>> a7dd14c (changing a button depending on the current category)
-=======
-=======
->>>>>>> 615b627 (css/html)
->>>>>>> 2f44db2 (css/html)
-=======
-=======
->>>>>>> 615b627 (css/html)
-=======
->>>>>>> b466059 (changing a button depending on the current category)
-<<<<<<< HEAD
->>>>>>> 38ff85b (changing a button depending on the current category)
-=======
-=======
-        <a href="{{ url_for('form') }}">+</a>
-=======
->>>>>>> 51dd808 (fixing css and html)
-    </nav>
-<<<<<<< HEAD
->>>>>>> 615b627 (css/html)
-<<<<<<< HEAD
->>>>>>> 747735c (css/html)
-=======
-=======
-
-    <div class="grid-container">
-        <div class="grid-item">
-            <a href="{{ url_for('common') }}">Common</a>
-        </div>
-        <div class="grid-item {% if current_category == 'Limited' %}active{% endif %}">
-            <a href="{{ url_for('limited') }}">Limited</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('discontinued') }}">Discontinued</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('secrets') }}">Secrets</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('robbie') }}">Robby</a>
-        </div>
-    </div>
-
->>>>>>> b466059 (changing a button depending on the current category)
-<<<<<<< HEAD
->>>>>>> a6f9b8d (changing a button depending on the current category)
-=======
-=======
-        <a href="{{ url_for('form') }}">+</a>
-=======
->>>>>>> 51dd808 (fixing css and html)
-    </nav>
-<<<<<<< HEAD
->>>>>>> 615b627 (css/html)
-<<<<<<< HEAD
->>>>>>> 78d5073 (css/html)
-=======
-=======
-
-    <div class="grid-container">
-        <div class="grid-item">
-            <a href="{{ url_for('common') }}">Common</a>
-        </div>
-        <div class="grid-item {% if current_category == 'Limited' %}active{% endif %}">
-            <a href="{{ url_for('limited') }}">Limited</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('discontinued') }}">Discontinued</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('secrets') }}">Secrets</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('robbie') }}">Robby</a>
-        </div>
-    </div>
-
->>>>>>> b466059 (changing a button depending on the current category)
-<<<<<<< HEAD
->>>>>>> 8316ace (changing a button depending on the current category)
-=======
-=======
-        <a href="{{ url_for('form') }}">+</a>
-=======
->>>>>>> 51dd808 (fixing css and html)
-    </nav>
-<<<<<<< HEAD
->>>>>>> 615b627 (css/html)
-<<<<<<< HEAD
->>>>>>> 0a572a2 (css/html)
-=======
-=======
-
-    <div class="grid-container">
-        <div class="grid-item">
-            <a href="{{ url_for('common') }}">Common</a>
-        </div>
-        <div class="grid-item {% if current_category == 'Limited' %}active{% endif %}">
-            <a href="{{ url_for('limited') }}">Limited</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('discontinued') }}">Discontinued</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('secrets') }}">Secrets</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('robbie') }}">Robby</a>
-        </div>
-    </div>
-
->>>>>>> b466059 (changing a button depending on the current category)
-<<<<<<< HEAD
->>>>>>> a5af0dd (changing a button depending on the current category)
-=======
-=======
-        <a href="{{ url_for('form') }}">+</a>
-    </nav>
-<<<<<<< HEAD
->>>>>>> 615b627 (css/html)
-<<<<<<< HEAD
->>>>>>> 3e716ba (css/html)
-=======
-=======
-
-    <div class="grid-container">
-        <div class="grid-item">
-            <a href="{{ url_for('common') }}">Common</a>
-        </div>
-        <div class="grid-item {% if current_category == 'Limited' %}active{% endif %}">
-            <a href="{{ url_for('limited') }}">Limited</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('discontinued') }}">Discontinued</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('secrets') }}">Secrets</a>
-        </div>
-        <div class="grid-item">
-            <a href="{{ url_for('robbie') }}">Robby</a>
-        </div>
-    </div>
-
->>>>>>> b466059 (changing a button depending on the current category)
->>>>>>> 5f6688c (changing a button depending on the current category)
     <h1>Limited Sonny Items</h1>
     <ul class="item-list">
         {% if items %}
             {% for item in items %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
                 <li>
                     <div class="grid-container">
                         <h3>{{ item.name }}</h3>
@@ -228,22 +50,13 @@
                                 <img src="{{ image.url }}" alt="{{ item.name }} Image">
                             {% endfor %}
                         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
                         <div class="item-details hidden">
-=======
                         <div class="item-details">
->>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
-=======
                         <div class="item-details hidden">
->>>>>>> 16f193f (merging and hidding details for sonnies. will only be displayed in modal)
                             <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
                             <p>Series: {{ item.series }}</p>
                             <p>Category: {{ item.category }}</p>
                             <p>Market Value: {{ item.mrk_value }}</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                 {% set hide_item = false %}
                 {% for image in item.images %}
                     {% if image.is_darkened %}
@@ -273,12 +86,6 @@
                                 <!-- add more details later -->
                             </div>
                             {% endif %}
-=======
->>>>>>> 71d8ba8 (merging and hidding details for sonnies. will only be displayed in modal)
-                            <!-- add more details later -->
->>>>>>> f44ab51 (darken image, remove info if finished trading)
-=======
->>>>>>> 16f193f (merging and hidding details for sonnies. will only be displayed in modal)
                         </div>
                     </li>
                 {% endif %}
