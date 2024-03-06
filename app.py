@@ -26,7 +26,6 @@ class SonnyItems(UserMixin, db.Model):
     def __repr__(self):
         return f'<SonnyItems {self.name}>'
 
-
 class ItemImage(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     item_id = db.Column(db.Integer, db.ForeignKey('sonny_items.id'))
@@ -45,7 +44,6 @@ class Socials(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<createAccount {self.social_media}>'
-
 
 @app.route('/')
 def start():
@@ -226,12 +224,12 @@ def add_inventory():
             category = request.form['category']
             mrk_value = request.form['mrk_value']
             images = request.form.getlist('images')  # Get list of all image URLs
+            favorite = True if request.form.get('favorite') == 'on' else False
 
             # Save inventory item with multiple images
-            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value)
+            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value, favorite=favorite)
             db.session.add(inventory_item)
 
-            # Add multiple images
             for img_url in images:
                 image = ItemImage(url=img_url, item=inventory_item)
                 db.session.add(image)
