@@ -108,14 +108,15 @@
                                 const itemId = this.getAttribute('data-item-id');
                                 const itemImages = document.querySelectorAll(`.item-${itemId}`);
                                 itemImages.forEach(image => {
-                                    if(image.classList.contains('darkened')) {
-                                        image.classList.remove('darkened')
+                                    if (image.classList.contains('darkened')) {
+                                        image.classList.remove('darkened');
                                     } else {
                                         image.classList.add('darkened');
                                     }
                                 });
 
-                                fetch(`toggle_trade/${itemId}`, {method: 'POST '});
+                                // Send a request to the server to update the trade status
+                                fetch(`/toggle_trade/${itemId}`, { method: 'POST' });
                             });
                         });
                     </script>
