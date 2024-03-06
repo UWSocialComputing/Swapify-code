@@ -30,6 +30,7 @@ class ItemImage(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     item_id = db.Column(db.Integer, db.ForeignKey('sonny_items.id'))
     url = db.Column(db.String(200), nullable=False)
+    is_darkened = db.Column(db.Boolean, default=False)
     item = relationship("SonnyItems", back_populates="images")
 
     def __repr__(self):
@@ -44,6 +45,7 @@ class Socials(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<createAccount {self.social_media}>'
+
 
 @app.route('/')
 def start():
@@ -223,13 +225,13 @@ def add_inventory():
             series = request.form['series']
             category = request.form['category']
             mrk_value = request.form['mrk_value']
-            images = request.form.getlist('images')  # Get list of all image URLs
-            favorite = True if request.form.get('favorite') == 'on' else False
+            images = request.form.getlist('images')
 
             # Save inventory item with multiple images
-            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value, favorite=favorite)
+            inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value)
             db.session.add(inventory_item)
 
+            # Add multiple images
             for img_url in images:
                 image = ItemImage(url=img_url, item=inventory_item)
                 db.session.add(image)
@@ -288,6 +290,19 @@ def socials_link():
         except:
             flash('There was an issue adding one of your inputs.', 'error')
             return redirect(url_for('profile'))
+
+
+@app.route('/toggle_trade/<int:item_id>', methods=['POST'])
+def toggle_trade(item_id):
+    item_images = ItemImage.query.filter_by(item_id=item_id).all()
+
+    for image in item_images:
+        image.is_darkened = not image.is_darkened
+    try:
+        db.session.commit()
+        return 'Trade toggled successfully', 200
+    except Exception as e:
+        return 'Error in trading', 500
 
 
 if __name__ == "__main__":

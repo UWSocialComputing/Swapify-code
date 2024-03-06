@@ -392,6 +392,11 @@ form {
   color: gray;
 }
 
+<<<<<<< HEAD
 .hidden {
   display: none;
+=======
+.darkened {
+  filter: brightness(50%);
+>>>>>>> f44ab51 (darken image, remove info if finished trading)
 }
