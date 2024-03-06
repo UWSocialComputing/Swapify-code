@@ -59,12 +59,20 @@
                             {% endfor %}
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div class="item-details hidden">
                         <p>User: {{ item.user }} </p>
                         <p>Series: {{ item.series }}</p>
                         <p>Category: {{ item.category }}</p>
                         <p>Market Value: ${{ item.mrk_value }}</p>
                     </div>
+=======
+                    <p>User: {{ item.user }} </p>
+                    <p>Series: {{ item.series }}</p>
+                    <p>Category: {{ item.category }}</p>
+                    <p>Market Value: ${{ item.mrk_value }}</p>
+                    <i class="fa-regular fa-heart"></i>
+>>>>>>> fc49f26 (display if user finishes trade or not)
                 </li>
             {% endfor %}
         {% else %}
