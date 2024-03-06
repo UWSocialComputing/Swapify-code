@@ -386,8 +386,6 @@ form {
   color: gray;
 }
 
-
-
-
-
-
+.darkened {
+  filter: brightness(50%);
+}

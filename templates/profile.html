@@ -53,7 +53,7 @@
                             <div id="social-item">
                                 <h4>Platform: {{ m.social_media }}</h4>
                                 <h4>Link or Phone: {{ m.social_link }}</h4>
-                                <h4>Username (or write N/A if phone is used): {{ m.social_username }}</h4>
+                                <h4>Username: {{ m.social_username }}</h4>
                             </div>
                         {% else %}
                             <p>No social media content found.</p>
@@ -70,7 +70,7 @@
                         <h4>{{ item.name }}</h4>
                         <div class="images">
                             {% for image in item.images %}
-                                <img src="{{ image.url }}" alt="{{ item.name }} Image">
+                            <img src="{{ image.url }}" alt="{{ item.name }} Image" class="item-{{ item.id }} {% if image.is_darkened %}darkened{% endif %}">
                             {% endfor %}
                         </div>
                     </div>
@@ -92,12 +92,32 @@
                         <button id="submit" type="submit">Update Inventory</button>
                     </form>
                     <button id="editButton" type="button">Edit</button>
+                    <button class="tradeButton" type="button" data-item-id="{{ item.id }}">Trade</button>
+
 
                     <script>
-                    document.getElementById('editButton').addEventListener('click', function() {
-                        document.getElementById('editForm').style.display = 'block'; // Show the form
-                        this.style.display = 'none'; // Optionally, hide the edit button
-                    });
+                        //for editing
+                        document.getElementById('editButton').addEventListener('click', function() {
+                            document.getElementById('editForm').style.display = 'block'; // Show the form
+                            this.style.display = 'none'; // Optionally, hide the edit button
+                        });
+
+                        //for trading
+                        document.querySelectorAll('.tradeButton').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const itemId = this.getAttribute('data-item-id');
+                                const itemImages = document.querySelectorAll(`.item-${itemId}`);
+                                itemImages.forEach(image => {
+                                    if(image.classList.contains('darkened')) {
+                                        image.classList.remove('darkened')
+                                    } else {
+                                        image.classList.add('darkened');
+                                    }
+                                });
+
+                                fetch(`toggle_trade/${itemId}`, {method: 'POST '});
+                            });
+                        });
                     </script>
                 {% else %}
                     <p>No items found.</p>
