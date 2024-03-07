@@ -13,8 +13,8 @@
 <nav class="navbar">
     <a href="{{ url_for('index') }}">Home</a>
     <a href="{{ url_for('profile') }}">Profile</a>
-    <a id="logout" href="{{ url_for('logout') }}">Logout</a>
     <a href="{{ url_for('form') }}">+</a>
+    <a id="logout" href="{{ url_for('logout') }}">Logout</a>
 </nav>
 
 <div class="container">
@@ -102,5 +102,6 @@
         </div>
     {% endfor %}
 </div>
+<script src="static/script/profile.js"></script>
 </body>
 </html>
