@@ -6,7 +6,6 @@ body {
   width: 80%;
 }
 
-
 header {
   font-size: 40px;
   text-align: center;
@@ -132,10 +131,11 @@ a {
 .navbar {
     overflow: hidden;
     background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
+    text-align: center;
 }
 
 .navbar a {
-    float: left;
+    float: none;
     display: block;
     color: #000000;
     text-align: center;
@@ -187,8 +187,7 @@ a {
 }
 
 .grid-item.active a {
-  color: #FF5733; /* Change the color to indicate it's active */
-  /* Add any other styles to indicate it's active */
+  color: #FF5733;
 }
 
 
@@ -331,30 +330,28 @@ form {
 
 }
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content/Box */
+
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%;
 }
 
-/* The Close Button */
 .close {
   color: #aaa;
   float: right;
@@ -373,7 +370,7 @@ form {
   text-align: center;
   letter-spacing: 10px;
   background: linear-gradient(90deg, rgba(160, 155, 251, 1) 0%, rgba(224, 136, 210, 0.45) 35%, rgba(161, 223, 236, 1) 100%);
-  -webkit-background-clip: text; /* For WebKit/Blink browsers (Chrome, Safari, etc.) */
+  -webkit-background-clip: text;
   color: transparent;
   font-size: 30px;
   text-align: center;
