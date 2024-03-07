@@ -38,28 +38,28 @@
         </div>
     </div>
 
-    <h1>Common Sonny Items</h1>
+    <h1> Common Sonny Items </h1>
     <ul class="item-list">
         {% if items %}
             {% for item in items %}
-                {% set hide_item = false %}
+                {% set hide = false %}
                 {% for image in item.images %}
-                    {% if image.is_darkened %}
-                        {% set hide_item = true %}
+                    {% if item.is_darkened %}
+                        {% set hide = true %}
                     {% endif %}
                 {% endfor %}
-                {% if not hide_item %}
+                {% if not hide %}
                     <li class="item-{{ item.id }}">
                         <div class="grid-container">
-                            {% if not item.images[0].is_darkened %}
-                                <h3>{{ item.name }}</h3>
+                            {%if not item.images[0].is_darkened%}
+                            <h3> {{ item.name }} </h3>
                                 <div class="image-container">
                                     {% for image in item.images %}
-                                        <img src="{{ image.url }}" alt="{{ item.name }} Image"
-                                            {% if image.is_darkened %}
-                                                style="display: none;"
-                                            {% endif %}>
-                                    {% endfor %}
+                                        <img src="{{image.url}}" alt="{{item.name}} Image"
+                                        {%if image.is_darkened %}
+                                            style="display: none;"
+                                        {% endif%}>
+                                    {%endfor%}
                                 </div>
                                 <div class="item-details">
                                     <a href="{{url_for('user_profile', username=item.user)}}"> User: {{ item.user }} </a>
@@ -71,9 +71,9 @@
                             {%endif%}
                         </div>
                     </li>
-                {% endif %}
-            {% endfor %}
-        {% else %}
+                {%endif%}
+            {%endfor%}
+        {%else%}
             <p>No Common Sonny items found.</p>
         {% endif %}
     </ul>

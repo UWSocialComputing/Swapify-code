@@ -105,9 +105,9 @@
                         //for trading
                         document.querySelectorAll('.tradeButton').forEach(button => {
                             button.addEventListener('click', function() {
-                                const itemId = this.getAttribute('data-item-id');
-                                const itemImages = document.querySelectorAll(`.item-${itemId}`);
-                                itemImages.forEach(image => {
+                                const item_id = this.getAttribute('data-item-id');
+                                const item_images = document.querySelectorAll(`.item-${item_id}`);
+                                item_images.forEach(image => {
                                     if (image.classList.contains('darkened')) {
                                         image.classList.remove('darkened');
                                     } else {
@@ -115,8 +115,7 @@
                                     }
                                 });
 
-                                // Send a request to the server to update the trade status
-                                fetch(`/toggle_trade/${itemId}`, { method: 'POST' });
+                                fetch(`/toggle_trade/${item_id}`, { method: 'POST' });
                             });
                         });
                     </script>

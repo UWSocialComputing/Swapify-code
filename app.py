@@ -13,7 +13,6 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
 class SonnyItems(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user = db.Column(db.String(200), nullable=False)
@@ -22,7 +21,6 @@ class SonnyItems(UserMixin, db.Model):
     category = db.Column(db.String(200), nullable=False)
     mrk_value = db.Column(db.Float, nullable=False)
     images = relationship("ItemImage", back_populates="item")
-
     def __repr__(self):
         return f'<SonnyItems {self.name}>'
 
@@ -35,6 +33,7 @@ class ItemImage(db.Model):
 
     def __repr__(self):
         return f'<ItemImage {self.id}>'
+
 
 class Socials(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -227,11 +226,9 @@ def add_inventory():
             mrk_value = request.form['mrk_value']
             images = request.form.getlist('images')
 
-            # Save inventory item with multiple images
             inventory_item = SonnyItems(user=current_user.username, name=name, series=series, category=category, mrk_value=mrk_value)
             db.session.add(inventory_item)
 
-            # Add multiple images
             for img_url in images:
                 image = ItemImage(url=img_url, item=inventory_item)
                 db.session.add(image)
