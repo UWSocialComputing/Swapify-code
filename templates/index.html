@@ -60,7 +60,7 @@
                                 {% endfor %}
                             </div>
                             <!--Information for listing-->
-                            <div class="">
+                            <div class="listing-info hidden">
                                 <a href="{{ url_for('user_profile', username=item.user) }}"> User: {{ item.user }} </a>
                                 <p>
                                     {{ item.series }}
@@ -91,5 +91,6 @@
         </div>
     </div>
 </div>
+<script src="static/script/script.js"></script>
 </body>
 </html>
