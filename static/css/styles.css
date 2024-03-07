@@ -398,3 +398,49 @@ form {
 .darkened {
   filter: brightness(50%);
 }
+
+.images {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.images img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: opacity 0.5s ease;
+    width: 100%;
+    height: auto;
+}
+
+.images img:first-child {
+    position: relative;
+}
+
+.images img:not(:first-child) {
+    opacity: 0;
+}
+
+.images:hover img:not(:first-child) {
+    opacity: 1;
+}
+
+.images:hover img:first-child {
+    opacity: 0;
+}
+
+.item_ {
+  padding-bottom: 20px;
+  background-image: linear-gradient(123.5deg, rgba(244, 219, 251, .2) 29.3%, rgba(255, 214, 214, .2) 67.1%);
+}
+
+.item_:hover {
+  background-image: linear-gradient(123.5deg, rgba(244, 219, 251, .4) 29.3%, rgba(255, 214, 214, .4) 67.1%);
+  transition: background-color 0.5s ease;
+}
+
+.center {
+  text-align: center;
+}

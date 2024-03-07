@@ -1,4 +1,4 @@
-CREATE TABLE createAccounts (
+CREATE TABLE accounts (
     id INTEGER PRIMARY KEY,
     -- owner_id INTEGER NOT NULL,
     firstName VARCHAR(200) NOT NULL,
@@ -10,7 +10,6 @@ CREATE TABLE createAccounts (
 );
 
 
-
 CREATE TABLE sonny_items (
     id INTEGER PRIMARY KEY,
     user VARCHAR(200) NOT NULL,
@@ -20,6 +19,7 @@ CREATE TABLE sonny_items (
     mrk_value FLOAT NOT NULL,
     images VARCHAR(200) NOT NULL,
 );
+
 
 CREATE TABLE socials (
     id INTEGER PRIMARY KEY,
