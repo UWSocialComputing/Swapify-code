@@ -162,7 +162,6 @@ a {
 .grid-item {
   display: inline-block;
   padding: 10px;
-  margin: 10px;
   font-family: Arial, sans-serif;
   font-size: 20px;
   text-align: center;
@@ -178,7 +177,7 @@ a {
 }
 
 .grid-item a{
-  color:#9d84bd;
+  color:#E0B0FF;
   letter-spacing: 10px;
 }
 
