@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Get all Sonny item containers
-    var sonnyContainers = document.querySelectorAll(".item-list li");
+    var sonnyContainers = document.querySelectorAll(".sonny_items_container");
 
     // Add click event listener to each Sonny item container
     sonnyContainers.forEach(function(container) {
         container.addEventListener("click", function() {
             // Get Sonny Angel details
-            var name = container.querySelector("h3").textContent;
+            var name = container.querySelector("h5").textContent;
             var series = container.querySelector("p:nth-of-type(1)").textContent;
             var category = container.querySelector("p:nth-of-type(2)").textContent;
             var mrk_value = container.querySelector("p:nth-of-type(3)").textContent;
