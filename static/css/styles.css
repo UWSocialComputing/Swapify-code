@@ -1,9 +1,7 @@
 body {
   background-color: #FFFFFF;
   font-family: "Roboto", sans-serif;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+  margin: 0;
 }
 
 header {
@@ -129,27 +127,24 @@ a {
   text-decoration: none;
 }
 .navbar {
-    overflow: hidden;
-    background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
-    text-align: center;
+  overflow: hidden;
+  background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
+  text-align: center;
 }
 
 .navbar a {
-    float: none;
-    display: block;
-    color: #000000;
-    text-align: center;
-    padding: 15px 18px;
-    text-decoration: none;
+  display: inline-block;
+  /* float: none; */
+  /* display: block; */
+  color: #000000;
+  text-align: center;
+  padding: 15px 18px;
+  text-decoration: none;
 }
 
 .navbar a:hover {
     background-color: #ddd;
     color: black;
-}
-
-#logout {
-  margin-left: 750px;
 }
 
 .grid-container {
