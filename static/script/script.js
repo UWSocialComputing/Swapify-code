@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
             var series = container.querySelector("p:nth-of-type(1)").textContent;
             var category = container.querySelector("p:nth-of-type(2)").textContent;
             var mrk_value = container.querySelector("p:nth-of-type(3)").textContent;
+            var userLink = container.querySelector(".listing-info a").href; // Get the user profile link
+            var user = container.querySelector(".listing-info a").textContent; // Get the
             var imageSrc = container.querySelector("img").src;
 
             // Update modal content
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var modalDetails = document.querySelector("#myModal .modal-content #modal-details");
             modalDetails.innerHTML = `
                 <img src="${imageSrc}" alt="${name}">
+                <p><a href="${userLink}">${user}</a></p>
                 <p>${series}</p>
                 <p>${category}</p>
                 <p>${mrk_value}</p>

@@ -302,6 +302,10 @@ select {
   filter: opacity(0.7);
 }
 
+.listing-info.hidden {
+  display: none;
+}
+
 
 form {
   width: 80%;
