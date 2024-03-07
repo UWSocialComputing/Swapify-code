@@ -163,7 +163,17 @@
                 }
             });
             // Send a request to the server to update the trade status
-            fetch(`/toggle_trade/${itemId}`, {method: 'POST'});
+            fetch(`/toggle_trade/${itemId}`, {method: 'POST'})
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.error('Failed to update trade status');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
     });
 </script>
