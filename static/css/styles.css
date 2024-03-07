@@ -443,3 +443,7 @@ form {
 .center {
   text-align: center;
 }
+
+.card {
+  margin-bottom: 30px;
+}
