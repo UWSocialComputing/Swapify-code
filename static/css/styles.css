@@ -134,17 +134,20 @@ a {
 
 .navbar a {
   display: inline-block;
-  /* float: none; */
-  /* display: block; */
   color: #000000;
   text-align: center;
-  padding: 15px 18px;
+  padding: 20px 55px;
   text-decoration: none;
 }
 
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
+  background-color: #ddd;
+  color: black;
+}
+
+#logout {
+  margin-left: auto;
+  padding: 20px 55px;
 }
 
 .grid-container {
