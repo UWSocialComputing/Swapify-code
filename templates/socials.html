@@ -21,8 +21,9 @@
 
     <form action="/socials_link" method="post">
         <h4> Platform: <input aria-label="Platform" type="text" name="platform" required> </h4>
-        <h4> Link or Phone: <input aria-label="Link" type="text" name="link"></h4>
+        <h4> Link or Phone Number<input aria-label="Link" type="text" name="link"></h4>
         <h4> Username: <input aria-label ="username" type="text" name="username"> </h4>
+        <label><input type="checkbox" name="is_phone" value=True> Check if you provided a phone number</label><br>
         <button id = "back" onclick="goBack()">Back</button>
         <button id="submit" type="submit">Add Social Media</button>
     </form>
