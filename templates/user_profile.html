@@ -65,11 +65,13 @@
                                         {% endfor %}
                                     </div>
 
-                                    <a href="{{ url_for('user_profile', username=item.user) }}">{{ first }}
-                                        @{{ item.user }} </a>
-                                    <p>Series: {{ item.series }}</p>
-                                    <p>Category: {{ item.category }}</p>
-                                    <p>Market Value: {{ item.mrk_value }}</p>
+                                    {% if 'series' not in item.series.lower() %}
+                                        <p>{{ item.series }} Series</p>
+                                    {% else %}
+                                        <p>{{ item.series }}</p>
+                                    {% endif %}
+                                    <p>{{ item.category }} Sonny</p>
+                                    <p>Market Value ${{ item.mrk_value }}</p>
                                 </div>
                             {% endif %}
                         {% endfor %}
