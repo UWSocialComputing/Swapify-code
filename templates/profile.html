@@ -51,7 +51,8 @@
                                     {% if m.is_phone == True %}
                                         <h6>Phone: {{ m.social_link }}</h6>
                                     {% else %}
-                                        <h6> {{ m.social_media }} <a href="{{m.social_link}}"> {{ m.social_username }}</a>  </h6>
+                                        <h6> {{ m.social_media }} <a
+                                                href="{{ m.social_link }}"> {{ m.social_username }}</a></h6>
                                     {% endif %}
                                 </div>
                             {% else %}
@@ -95,13 +96,13 @@
 
                                 <!--Information for listing-->
                                 <div class="listing-info hidden">
-                                    <a href="{{ url_for('user_profile', username=item.user) }}"> User: {{ item.user }} </a>
-                                    <p>
-                                        {{ item.series }}
-                                        {% if not item.series.endswith('Series') %}
-                                        Series
-                                        {% endif %}
-                                    </p>
+                                    <a href="{{ url_for('user_profile', username=item.user) }}">
+                                        User: {{ item.user }} </a>
+                                    {% if 'series' not in item.series.lower() %}
+                                        <p>{{ item.series }} Series</p>
+                                    {% else %}
+                                        <p>{{ item.series }}</p>
+                                    {% endif %}
                                     <p>{{ item.category }} Sonny </p>
                                     <p>Market Value ${{ item.mrk_value }}</p>
                                 </div>
