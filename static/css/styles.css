@@ -25,6 +25,11 @@ img {
   height: 50vh;
 }
 
+.login-form {
+  text-align: center;
+  align-items: center;
+}
+
 #login {
   color: #c4bbf0;
 }
@@ -32,7 +37,7 @@ img {
 #email,
 #pass,
 .login-page{
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -43,8 +48,8 @@ img {
 
 #email-text,
 #pass-text {
-  width: 60vh;
-  height: 7%;
+  width: 80vh;
+  height: 10%;
 }
 
 .button-container {
@@ -83,13 +88,6 @@ img {
   text-align: center;
 }
 
-#create-form {
-  flex-wrap: wrap;
-  background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
-  border-radius: 20px;
-  height: 80vh;
-}
-
 .button-container button {
   background-color: lightgray;
   color: #fff;
@@ -119,9 +117,11 @@ img {
 }
 
 .create-page p {
-  font-size: 22px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
+
 
 a {
   text-decoration: none;
@@ -451,6 +451,49 @@ form {
   margin-top: 30px;
 }
 
-.create-form body {
+body.create-account-page {
   background-color: white;
+  font-family: "Roboto", sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.create-account-page header {
+  font-size: 40px;
+  background: linear-gradient(90deg, rgba(160, 155, 251, 1) 0%, rgba(224, 136, 210, 0.45) 35%, rgba(161, 223, 236, 1) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  border-radius: 15px;
+}
+
+#create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
+  border-radius: 20px;
+  height: 80%;
+  margin: 0 auto;
+}
+
+#create-form input {
+  background: white;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
+  border-radius: 20px;
+  height: 50%;
+  margin: 0 auto;
 }
