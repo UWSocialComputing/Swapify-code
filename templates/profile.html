@@ -70,7 +70,7 @@
                         {% for item in items %}
                             <div>
                                 <h4>{{ item.name }}</h4>
-                                <button class="btn btn-outline-primary btn-sm editButton" type="button"
+                                <!-- <button class="btn btn-outline-primary btn-sm editButton" type="button"
                                         data-target-form="editForm-{{ item.id }}">Edit
                                 </button>
 
@@ -82,7 +82,7 @@
                                     <button class="btn btn-outline-danger btn-sm tradeButton" type="button"
                                             data-item-id="{{ item.id }}">Traded
                                     </button>
-                                {% endif %}
+                                {% endif %} -->
 
                                 <div class="row-cols-lg-3 d-flex flex-column align-items-center">
                                     <div class="images">
@@ -107,6 +107,18 @@
 
                                     <p>{{ item.category }} Sonny </p>
                                     <p>Market Value ${{ item.mrk_value }}</p>
+                                    <button class="btn btn-outline-primary btn-sm editButton" type="button"
+                                        data-target-form="editForm-{{ item.id }}">Edit
+                                    </button>
+                                    {% if item.traded == True %}
+                                        <button class="btn btn-outline-success btn-sm tradeButton" type="button"
+                                                data-item-id="{{ item.id }}"> Mark as Available
+                                        </button>
+                                    {% else %}
+                                        <button class="btn btn-outline-danger btn-sm tradeButton" type="button"
+                                                data-item-id="{{ item.id }}">Traded
+                                        </button>
+                                    {% endif %}
                                 </div>
 
 

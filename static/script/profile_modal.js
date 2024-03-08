@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
               <p>${series}</p>
               <p>${category}</p>
               <p>${mrk_value}</p>
+              <button class="btn btn-outline-primary btn-sm editButton" type="button" data-target-form="editForm-${name}">Edit</button>
+              <button class="btn btn-outline-danger btn-sm tradeButton" type="button" data-item-id="${name}">Traded</button>
           `;
 
           // Open the modal
