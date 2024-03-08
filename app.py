@@ -54,6 +54,7 @@ class Socials(UserMixin, db.Model):
     social_link = db.Column(db.String(200), nullable=False)
     social_username = db.Column(db.String(200), nullable=False)
     user = db.Column(db.String(200), nullable=False)
+    is_phone = db.Column(db.Boolean, nullable=False)
 
     def __repr__(self):
         return f'<Accounts {self.social_media}>'
@@ -270,12 +271,22 @@ def socials_link():
         username = request.form['username']
         user_ = current_user.username
 
+        is_phone = request.form.get('is_phone')
+
+        if is_phone:
+            is_phone = True
+        else:
+            is_phone = False
+            print("is phone is False")
+        users_socials = Socials(social_media=platform, social_link=link, social_username=username, user=user_, is_phone=is_phone)
+
         try:
-            db.session.add(Socials(social_media=platform, social_link=link, social_username=username, user=user_))
+            db.session.add(users_socials)
             db.session.commit()
             flash('Social media added successfully!', 'success')
             return redirect(url_for('profile'))
-        except:
+        except Exception as e:
+            print(e)
             flash('There was an issue adding one of your inputs.', 'error')
             return redirect(url_for('profile'))
 
