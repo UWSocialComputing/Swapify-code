@@ -51,9 +51,7 @@
                                     {% if m.is_phone == True %}
                                         <h6>Phone: {{ m.social_link }}</h6>
                                     {% else %}
-                                        <h6>Platform: {{ m.social_media }}</h6>
-                                        <h6> Link:<a href="{{m.social_link}}"> {{ m.social_link }}</a> </h6>
-                                        <h6>Username: {{ m.social_username }}</h6>
+                                        <h6> {{ m.social_media }} <a href="{{m.social_link}}"> {{ m.social_username }}</a>  </h6>
                                     {% endif %}
                                 </div>
                             {% else %}
