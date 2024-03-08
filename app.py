@@ -163,10 +163,11 @@ def user_profile(username):
     user_ = Accounts.query.filter_by(username=username).first()
     socials_ = Socials.query.filter_by(user=username).all()
     users_sonny = SonnyItems.query.filter_by(user=username).all()
+    traded_count = SonnyItems.query.filter_by(user=username, traded=True).count()
     if user_ is None:
         return render_template('index.html')
     return render_template('user_profile.html', items=users_sonny, username=user_.username, first=user_.firstName,
-                           last=user_.lastName, email=user_.email, socials=socials_)
+                           last=user_.lastName, email=user_.email, socials=socials_, traded_count=traded_count)
 
 
 @app.route('/form')
@@ -270,7 +271,6 @@ def socials_link():
         link = request.form['link']
         username = request.form['username']
         user_ = current_user.username
-
         is_phone = request.form.get('is_phone')
 
         if is_phone:
