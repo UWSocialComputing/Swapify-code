@@ -36,16 +36,17 @@
                             </div>
                             <!-- Social media section -->
                             <div class="mt-3">
-                                <div id="social-item">
-                                    {% for m in media %}
-                                        <h5> Linked Socials</h5>
-                                        <h6>Platform: {{ m.social_media }}</h6>
-                                        <h6>Link or Phone: {{ m.social_link }}</h6>
-                                        <h6>Username: {{ m.social_username }}</h6>
+                                <h5> Linked Socials</h5>
+                                {% for m in socials %}
+                                    {% if m.is_phone == True %}
+                                        <h6>Phone: {{ m.social_link }}</h6>
                                     {% else %}
-                                        <p>No social media accounts found.</p>
-                                    {% endfor %}
-                                </div>
+                                        <h6> {{ m.social_media }} <a
+                                                href="{{ m.social_link }}"> {{ m.social_username }}</a></h6>
+                                    {% endif %}
+                                {% else %}
+                                    <p>No social media accounts found.</p>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -99,7 +100,7 @@
                             @{{ item.user }} </a>
                         {% if 'series' not in item.series.lower() %}
                             <p>{{ item.series }} Series</p>
-                            {% else %}
+                        {% else %}
                             <p>{{ item.series }}</p>
                         {% endif %}
                         <p>{{ item.category }} Sonny</p>
