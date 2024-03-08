@@ -92,6 +92,21 @@
                                     </div>
                                     <h1 style="margin-top: 20px;"></h1>
                                 </div>
+
+                                <!--Information for listing-->
+                                <div class="listing-info hidden">
+                                    <a href="{{ url_for('user_profile', username=item.user) }}"> User: {{ item.user }} </a>
+                                    <p>
+                                        {{ item.series }}
+                                        {% if not item.series.endswith('Series') %}
+                                        Series
+                                        {% endif %}
+                                    </p>
+                                    <p>{{ item.category }} Sonny </p>
+                                    <p>Market Value ${{ item.mrk_value }}</p>
+                                </div>
+
+
                                 <form id="editForm-{{ item.id }}" action="/edit_inventory/{{ item.id }}" method="post"
                                       style="display:none;">
                                     <input aria-label="Item name" type="text" name="name" value="{{ item.name }}"
@@ -131,6 +146,20 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="close-container">
+                        <span class="close">&times;</span>
+                    </div>
+                    <h2 id="modal-title">Title Goes Here</h2>
+                    <div id="modal-details">
+                        <!-- Details will be filled in by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            <script src="static/script/profile_modal.js"></script>
         </div>
     </div>
 </div>
